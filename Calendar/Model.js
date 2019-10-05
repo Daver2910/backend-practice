@@ -17,13 +17,13 @@ const TimeSlotSchema = mongoose.Schema({
 });
 
 const CalendarSchema = mongoose.Schema({
-    store_id:  {
+    store_id: {
         type: String,
         required: true
     },
     date: {
         date_id: Date,
-        slots:[ TimeSlotSchema ]
+        slots: [TimeSlotSchema]
     }
 });
 

@@ -8,13 +8,15 @@ class CalendarFactory {
         this.opening_hours = req.body.opening_hours;
         this.ExistingStoreId = req.params.store_id;
 
-        this.CalendarObject = (ArrayOfSlots) => new CalendarModel({
-            store_id: req.body.store_id,
-            date: {
-                date_id: req.body.date,
-                slots: ArrayOfSlots
-            }
-        });
+        this.CalendarObject = (ArrayOfSlots) => {
+            let dateKey = {};
+            dateKey[req.body.date] = ArrayOfSlots;
+
+            new CalendarModel({
+                store_id: req.body.store_id,
+                date: dateKey
+            });
+        }
     }
 
     GetCalendarByStoreId () {

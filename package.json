@@ -1,6 +1,6 @@
 {
   "name": "reservation-backend",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "build": "babel bin/dev.js -d dist",
@@ -12,11 +12,14 @@
     "@babel/preset-env": "^7.4.5",
     "@babel/register": "^7.4.4",
     "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
     "dotenv": "^8.0.0",
     "express": "~4.16.1",
-    "mongoose": "^5.6.0",
-    "morgan": "~1.9.1"
+    "mongoose": "^5.6.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "jest": "^24.8.0",
+    "babel-jest": "^24.8.0",
+    "morgan": "~1.9.1",
+    "debug": "~2.6.9"
+  }
 }

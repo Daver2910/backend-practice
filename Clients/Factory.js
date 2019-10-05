@@ -1,12 +1,12 @@
-const ClientModel = require('./Model');
+// const ClientModel = require('./Model');
 
 class ClientFactory {
 
-    constructor(req, res) {
+    constructor(req, res, ClientModel) {
         this.res = res;
         this.opening_hours = req.body.opening_hours;
         this.ExistingClientId = req.params.client_id;
-
+        this.DataBaseModal = ClientModel;
         this.ClientObject = new ClientModel({
             client_id: req.body.client_id,
             name: req.body.name,
@@ -23,8 +23,21 @@ class ClientFactory {
         });
     }
 
+    GetAllClients () {
+        this.DataBaseModal.find()
+            .then(Client => {
+                this.res
+                    .status(200)
+                    .send(Client)
+                    .end()
+            })
+            .catch(error => this.res.json({
+                message: error
+            }));
+    }
+
     GetClientById () {
-        ClientModel.findOne({client_id: this.ExistingClientId})
+        this.DataBaseModal.findOne({client_id: this.ExistingClientId})
             .then(Client => {
                 this.res.status(200)
                     .send(Client)
